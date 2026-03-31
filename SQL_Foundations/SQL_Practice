@@ -1,0 +1,86 @@
+SELECT * 
+FROM parks_and_recreation.employee_demographics;
+
+SELECT first_name,
+last_name,
+birth_date,
+age,
+(age + 10) * 10 + 10
+FROM parks_and_recreation.employee_demographics;
+
+
+select distinct first_name,gender
+FROM parks_and_recreation.employee_demographics;-- WHERE Clause
+
+Select *
+From employee_salary
+Where salary > 50000;
+#note salaries will not show those with salaries precisely at 50k as they are not above 50k
+
+Select *
+From employee_salary
+Where salary >= 50000;
+#Note that these results include 50k as the "=" sign includes that field
+
+Select *
+From employee_salary
+Where salary < 50000;
+#salaries reflect only under 50k because 50k is the exact cut off (thus not included)
+
+select *
+From employee_salary
+where salary <= 50000;
+#Note here the results will include the 50k perimiter set
+
+select *
+from employee_demographics
+WHERE gender = "female";
+#equal to "female" call
+
+select *
+From employee_demographics
+where gender != "female";
+#here we are looking at everything that IS NOT "female"
+
+select *
+from employee_demographics
+where birth_date > "1985-01-01";
+
+select *  
+from employee_demographics
+where birth_date > "1985-01-01"
+and gender = "male";
+#note only males born greater than 1985 will show
+
+select * 
+from employee_demographics
+where birth_date > "1985-01-01"
+or NOT gender = "male";
+#Note this operation will show options for either selections falling in the specific criteria.
+ 
+select * 
+from employee_demographics
+where (first_name = "Leslie" AND age = 44) Or age > 55;
+#Parenthesis- be aware this is an isolated condition. 
+
+-- Like statement
+
+#Note can add 2 special characters within "like" Statement they are: 
+# -- "%" (means anything)
+#and "_" (means specific value)
+
+Select *
+from employee_demographics
+where first_name = "jer";
+#Note here your condition has to be EXACTLY as it is in the sheet, 
+#any spelling error or missing letters will NOT give you an answer
+#to solve this problem we use the "Like" Function
+
+select *
+from employee_demographics
+where first_name LIKE "jer%";
+#you can also use "%er%" if you only know those are in your requests
+
+select *
+from employee_demographics
+where first_name like "a__";
